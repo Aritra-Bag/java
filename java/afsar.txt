@@ -1,0 +1,439 @@
+Problem: 01
+// import java.io.*;
+public class problem1 {
+    public static void main(String[] args) {
+        // InputStreamReader in=new InputStreamReader(System.in);
+        // BufferedReader br=new BufferedReader(in);
+        //int input = Integer.parseInt(args[0]);
+        for (int i = 1; i <= input; i++) {
+            int flag=1;
+            for (int j=2;j<i;j++) {
+                if (i % j == 0) {
+                    flag=0;
+                    break;
+                }
+                   
+            }
+            if(flag==1){
+                System.out.println(i);
+            }
+        }
+        
+    }
+}
+
+
+
+
+
+
+
+Problem_02:
+class Complex {
+    private double real;
+    private double imaginary;
+
+    public Complex(double real, double imaginary) {
+        this.real = real;
+        this.imaginary = imaginary;
+    }
+
+    public double getReal() {
+        return real;
+    }
+
+    public double getImaginary() {
+        return imaginary;
+    }
+
+    public Complex add(Complex other) {
+        double sumReal = this.real + other.real;
+        double sumImaginary = this.imaginary + other.imaginary;
+        return new Complex(sumReal, sumImaginary);
+    }
+
+    public Complex multiply(Complex other) {
+        double productReal = this.real * other.real - this.imaginary * other.imaginary;
+        double productImaginary = this.real * other.imaginary + this.imaginary * other.real;
+        return new Complex(productReal, productImaginary);
+    }
+}
+
+public class ComplexNumbers {
+    public static void main(String[] args) {
+        // Create two complex numbers
+        Complex c1 = new Complex(2.5, 3.5);
+        Complex c2 = new Complex(1.5, 2.5);
+
+        // Perform addition
+        Complex sum = c1.add(c2);
+        System.out.println("Sum: " + sum.getReal() + " + " + sum.getImaginary() + "i");
+
+        // Perform multiplication
+        Complex product = c1.multiply(c2);
+        System.out.println("Product: " + product.getReal() + " + " + product.getImaginary() + "i");
+    }
+}
+
+
+
+
+
+Problem: 03
+import java.util.Arrays;
+
+public class SortCities {
+    public static void main(String[] args) {
+        // Check if exactly five city names are provided
+        if (args.length != 5) {
+            System.out.println("Please provide exactly five city names as command line arguments.");
+            return;
+        }
+
+        // Sort the city names in alphabetical order
+        Arrays.sort(args);
+
+        // Display the sorted city names
+        System.out.println("Sorted city names:");
+        for (String city : args) {
+            System.out.println(city);
+        }
+    }
+}
+
+
+
+
+
+
+Problem: 04
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class ReverseString {
+    public static void main(String[] args) {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        try {
+            // Get the string input from the user
+            System.out.print("Enter a string: ");
+            String input = reader.readLine();
+
+            // Reverse the string
+            String reversed = reverseString(input);
+
+            // Print the reversed string
+            System.out.println("Reversed string: " + reversed);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Method to reverse a string
+    public static String reverseString(String input) {
+        StringBuilder reversed = new StringBuilder(input);
+        reversed.reverse();
+        return reversed.toString();
+    }
+}
+
+
+
+
+
+
+Problem: 05
+abstract class Shape {
+    public abstract double calculateArea();
+}
+
+class Square extends Shape {
+    private double side;
+
+    public Square(double side) {
+        this.side = side;
+    }
+
+    @Override
+    public double calculateArea() {
+        return side * side;
+    }
+}
+
+class Circle extends Shape {
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+}
+
+public class ShapeDemo {
+    public static void main(String[] args) {
+        Square square = new Square(5.0);
+        double squareArea = square.calculateArea();
+        System.out.println("Area of the square: " + squareArea);
+
+        Circle circle = new Circle(3.0);
+        double circleArea = circle.calculateArea();
+        System.out.println("Area of the circle: " + circleArea);
+    }
+}
+
+
+
+
+
+Problem:06
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+class Shape {
+    public double calculateArea(double radius) {
+        return Math.PI * radius * radius;
+    }
+
+    public double calculateArea(double sideLength) {
+        return sideLength * sideLength;
+    }
+}
+
+public class ShapeDemo {
+    public static void main(String[] args) {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        Shape shape = new Shape();
+
+        try {
+            System.out.print("Enter the radius of the circle: ");
+            double radius = Double.parseDouble(reader.readLine());
+            double circleArea = shape.calculateArea(radius);
+            System.out.println("Area of the circle: " + circleArea);
+
+            System.out.print("Enter the side length of the square: ");
+            double sideLength = Double.parseDouble(reader.readLine());
+            double squareArea = shape.calculateArea(sideLength);
+            System.out.println("Area of the square: " + squareArea);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter valid numeric values.");
+        }
+    }
+}
+
+
+
+
+Problem: 07
+interface Shape {
+    double calculatePerimeter();
+}
+
+class Square implements Shape {
+    private double sideLength;
+
+    public Square(double sideLength) {
+        this.sideLength = sideLength;
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return 4 * sideLength;
+    }
+}
+
+class Circle implements Shape {
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return 2 * Math.PI * radius;
+    }
+}
+
+public class ShapeDemo {
+    public static void main(String[] args) {
+        Shape square = new Square(5.0);
+        double squarePerimeter = square.calculatePerimeter();
+        System.out.println("Perimeter of the square: " + squarePerimeter);
+
+        Shape circle = new Circle(3.0);
+        double circlePerimeter = circle.calculatePerimeter();
+        System.out.println("Perimeter of the circle: " + circlePerimeter);
+    }
+}
+
+
+
+
+
+problem: 08
+class FibonacciThread extends Thread {
+    private int n;
+    private int delay;
+
+    public FibonacciThread(int n, int delay) {
+        this.n = n;
+        this.delay = delay;
+    }
+
+    @Override
+    public void run() {
+        int n1 = 0, n2 = 1;
+        System.out.println("Fibonacci Series for " + n + " terms:");
+        for (int i = 0; i < n; i++) {
+            System.out.print(n1 + " ");
+            int sum = n1 + n2;
+            n1 = n2;
+            n2 = sum;
+
+            try {
+                Thread.sleep(delay);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+class PrimeThread extends Thread {
+    private int start;
+    private int end;
+    private int delay;
+
+    public PrimeThread(int start, int end, int delay) {
+        this.start = start;
+        this.end = end;
+        this.delay = delay;
+    }
+
+    @Override
+    public void run() {
+        System.out.println("\nPrime numbers in the range " + start + " to " + end + ":");
+        for (int num = start; num <= end; num++) {
+            if (isPrime(num)) {
+                System.out.print(num + " ");
+
+                try {
+                    Thread.sleep(delay);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private boolean isPrime(int number) {
+        if (number <= 1) {
+            return false;
+        }
+
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+
+public class ThreadDemo {
+    public static void main(String[] args) {
+        FibonacciThread fibonacciThread = new FibonacciThread(10, 6000);
+        PrimeThread primeThread = new PrimeThread(1, 20, 3000);
+
+        fibonacciThread.start();
+        primeThread.start();
+    }
+}
+
+
+
+
+problem: 09
+public class DivideByZeroExceptionHandling {
+    public static void main(String[] args) {
+        try {
+            int numerator = 10;
+            int denominator = 0;
+            int quotient = divide(numerator, denominator);
+            
+            if (quotient == -1) {
+                throw new ArithmeticException("Exception Occurred");
+            }
+        } catch (ArithmeticException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            System.out.println("Result: -1");
+        }
+    }
+    
+    public static int divide(int numerator, int denominator) {
+        return numerator / denominator;
+    }
+}
+
+
+
+
+Problem: 10
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+class Student {
+    private int marks;
+
+    public Student(int marks) {
+        this.marks = marks;
+    }
+
+    public int getMarks() {
+        return marks;
+    }
+}
+
+public class StudentDemo {
+    public static void main(String[] args) {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        try {
+            System.out.print("Enter the number of students: ");
+            int numStudents = Integer.parseInt(reader.readLine());
+
+            Student[] students = new Student[numStudents];
+
+            for (int i = 0; i < numStudents; i++) {
+                System.out.print("Enter the marks for student " + (i + 1) + ": ");
+                int marks = Integer.parseInt(reader.readLine());
+
+                students[i] = new Student(marks);
+            }
+
+            double totalMarks = 0.0;
+            for (Student student : students) {
+                totalMarks += student.getMarks();
+            }
+
+            double averageMarks = totalMarks / numStudents;
+            System.out.println("Average marks obtained by all students: " + averageMarks);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid number.");
+        }
+    }
+}
